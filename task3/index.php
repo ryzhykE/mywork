@@ -5,6 +5,9 @@ include_once ("libs/ReadFile.php");
 
 
 $result = new ReadFile();
-$res = $result->readFileString();
+$res = $result->readFileString(PATH);
 
-echo$res;
+
+$results = $result->readFileSumbol(PATH);
+
+include_once ("template/index.php");
