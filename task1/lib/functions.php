@@ -5,11 +5,17 @@
  * upload file in dir
  */
 function upload($uploadfile) {
-	if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $uploadfile)) {
-		return SUCCESS_LOAD;
+	if(is_dir(PATH))
+	{
+		if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $uploadfile)) {
+			return SUCCESS_LOAD;
+		} else {
+			return ERR_LOAD;
+		}
 	} else {
-		return ERR_LOAD;
+		return NO_DIR;
 	}
+
 }
 
 /**
@@ -17,6 +23,8 @@ function upload($uploadfile) {
  * name and size file
  */
 function showDir($puth){
+	if(is_dir(PATH))
+	{
 	$nameFile = scandir($puth);
 	$nameFile = array_splice($nameFile, 2);
 	//var_dump($namesFile);
@@ -33,6 +41,9 @@ function showDir($puth){
 	    }
 		$result = [$nameFile, $size];
 	      return $result;
+	} else {
+		return NO_DIR;
+	}
 }
 
 /**
@@ -40,13 +51,17 @@ function showDir($puth){
  * del file
  */
 function deleteFile($del){
-		if(file_exists(PATH . $del)) {
-			if(unlink(PATH . $del)) {
+	if(is_dir(PATH)) {
+		if (file_exists(PATH . $del)) {
+			if (unlink(PATH . $del)) {
 				return DEL_FILE;
 			}
 		} else {
 			return NO_FILE;
 		}
+	}else {
+		return NO_DIR;
+	}
 }
 
 

@@ -10,6 +10,11 @@ if (isset($_POST['submit'])) {
 
 $result = showDir(PATH);
 
+
+if ($result == NO_DIR ) {
+    echo $result;
+}
+
 if(isset($_GET['del'])){
     $dell = $_GET['del'];
    deleteFile($dell);

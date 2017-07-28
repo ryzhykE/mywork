@@ -69,7 +69,7 @@
             </p>
             <h2 class="sub-header">Section file</h2>
             <div class="table-responsive">
-                <?php if(isset($result[0])): ?>
+                <?php if(isset($result[0]) && $result[0] !== 'n' ): ?>
                 <h3>File list on server</h3>
                 <table class="table table-striped">
                     <thead>
@@ -97,7 +97,7 @@
                 </table>
 
                     <?else:?>
-                    <p><?= No_DATA?></p>
+                    <p><?= NO_DATA?></p>
                 <?endif;?>
         </div>
     </div>

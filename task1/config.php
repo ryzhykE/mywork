@@ -7,6 +7,7 @@ define('ERR_LOAD','no uploaded file');
 define('NO_DATA','no file');
 define('NO_FILE','no file for del');
 define('DEL_FILE','file  del');
+define('NO_DIR','no dir');
 
 
 
